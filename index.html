@@ -14,24 +14,34 @@
 
     <a href="index.html"><img src="https://i.ytimg.com/vi/-nWnzXc4z9g/maxresdefault.jpg" class="img-fluid pb-4" alt="Responsive image"></a>
 
-     <div class="container-fluid">
+     <div class="container">
 
-        <div class="row border pb-2">
+        <div class="row border pb-2 m-0">
             <div class="col-sm-7">
                 <h2>Here's The Test of Test!</h2>
                 <h4>The Rules:</h4>
-                <p class="lead">Use the keyboard to guess the name of these 90s TV show favorites! Your number of guesses are limited so be wise and have fun!</p>
+                <p class="lead">Use the keyboard to guess the name of these 90s TV show favorites! Your number of guesses are limited so be wise and have fun!<br><br>
 
-                <p class="text-muted">(To restart game and score, refresh page)</p>
+                    Let's see who <strong><em>really</em></strong> knows the 90s.
+                </p>
+
+                <p class="text-muted">(To restart game and score, refresh page. Use <em>"Hints"</em> if needed.)</p>
             </div>
             <div class="col-sm-5">
                 <img id="fresh-gif" width="100%" height="70%" src="https://media2.giphy.com/media/mDSDfRgq8TKGk/200.webp?cid=790b7611ed780becd3048fd5a16f08c6885daee0fd22642c&rid=200.webp" alt="Fresh Prince of Bel-Air gif">
             </div>
         </div>
 
-        <div class="row">
+        <div class="row text-center">
             <div class="col-sm-7">
                 <h3 class="text-center border-bottom">Let's Play!</h3>
+                <div class="pb-5" id="hints"></div>
+                <div class="word-container" height="auto">
+                    <h3 id="userWordGuess"></h3>
+                </div>
+                <div class="word-container-2" height="auto">
+                    <h4 id="correct"></h4>
+                </div>
 
             </div>
             <div class="col-sm-5 text-center border-left border-dark">
@@ -47,7 +57,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <table class="table table-bordered">
+                <table class="table table-bordered" id="result">
                     <thead>
                         <tr>
                         <th scope="col">Number of Wins</th>
