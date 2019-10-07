@@ -6,106 +6,152 @@ let hints = [{h: "Jennifer Anniston played 'Rachel' in this show", a: "Friends"}
 {h: "Twin sisters Tia and Tamara", a: "Sister Sister"}
 ];
 
-let userWordGuess = document.querySelector("#userWordGuess");
-let typedGuesses = document.querySelector("#typedGuesses");
-let hints = document.querySelector("#hints");
-let numberOfWins = document.querySelector("#numberOfWins");
-let numberOfLosses = document.querySelector("#numberOfLosses");
-let correct = document.querySelector("#correct");
-let result = document.querySelector("#result");
 
-userWordGuess.textContent = userInput;
-typedGuesses.textContent = userGuess;
-numberOfWins.textContent = wins;
-numberOfLosses.textContent = loss;
-hints.textContent = "Hint!: " + hints[hintIndex].h;
-
+let userAnswer = [];
+console.log(userAnswer);
+let userGuess = [];
+let remainGuess = 10;
+let hintIndex = 0;
 let wins = 0;
 let loss = 0;
-let userGuess = " ";
-let userAnswer = [];
-let hintIndex = 0;
 
-function initialGame() {
-    if (hintIndex <= hints.length - 1) {
-            document.querySelector("#hints").innerHTML = "Hint!: " + hints[hintIndex].h;
-    }   if (wins === 0 && loss === 0 && userGuess === " ") {    
+//let randomHint
 
-    }
-}
-initialGame();
+//console.log(hints[5].a);
 
-// function restartGame() {
-//     if () {
+let userWordGuess = document.querySelector("#userWordGuess");
+let typedGuesses = document.querySelector("#typedGuesses");
+let myHints = document.querySelector("#hints");
+let numberOfWins = document.querySelector("#numberOfWins");
+let numberOfLosses = document.querySelector("#numberOfLosses");
+let guessRemain = document.querySelector("#remainGuess");
+
+
+
+// userWordGuess.textContent = userInput;
+// typedGuesses.textContent = userGuess;
+// numberOfWins.textContent = wins;
+// numberOfLosses.textContent = loss;
+// hints.textContent = "Hint!: " + hints[hintIndex].h;
+
+
+// function initialGame() {
+//     if (hintIndex <= hints.length - 1) {
+//             document.querySelector("#hints").innerHTML = "Hint!: " + hints[hintIndex].h;
+//     }   if (wins === 0 && loss === 0 && userGuess === " ") {    
 
 //     }
 // }
+// initialGame();
 
-// Function for hints that are being given.
-function renderHints() {
-    let hintIndex = Math.floor(Math.random() * hints.length);
-    let splitString = hintIndex.split
+// // function restartGame() {
+// //     if () {
 
-    if (hintIndex <= hints.length - 1) {
-        document.querySelector("#hints").innerHTML = "Hint!: " + hints[hintIndex].h;
+// //     }
+// // }
 
-        //console.log(hints);
-    }   else {
-    document.querySelector("#hints").innerHTML = "Thamks For Playing!";
-    document.querySelector("#result").innerHTML = "Final Results!";
+// // Function for hints that are being given.
+// function wordGen() {
+    let randomNum = Math.floor(Math.random() * hints.length);
+       
+        let randomWord = hints[randomNum].a;
+            console.log(randomWord);
+            
+        let randomHint = hints[randomNum].h;
+            console.log(randomHint);
 
-}
-};
-renderHints();
+//}
+//wordGen();
+//     let splitString = hintIndex.split
 
-//Function for updated wins.
-function updateWins() {
-    document.querySelector("#numberOfWins").innerHTML = wins;
-};
-updateWins();
+//     if (hintIndex <= hints.length - 1) {
+//         document.querySelector("#hints").innerHTML = "Hint!: " + hints[hintIndex].h;
 
-//Function for updated losses.
-function updateLoss() {
-    document.querySelector("#numberOfLosses").innerHTML = loss;
-};
-updateLoss();
+//         //console.log(hints);
+//     }   else {
+//     document.querySelector("#hints").innerHTML = "Thamks For Playing!";
+//     document.querySelector("#result").innerHTML = "Final Results!";
+
+
+// };
+//renderHints();
+
+// //Function for updated wins.
+// function updateWins() {
+//     document.querySelector("#numberOfWins").innerHTML = wins;
+// };
+// updateWins();
+
+// //Function for updated losses.
+// function updateLoss() {
+//     document.querySelector("#numberOfLosses").innerHTML = loss;
+// };
+// updateLoss();
+
+// let x = "abcd";
+// console.log(x);
+// console.log(x.indexOf("c"));
+// console.log(x.indexOf("a"));
+// console.log(x.indexOf("z"));
 
 //Onkeypress function.
 document.onkeypress = function (event) {
-    if (hintIndex === hints.length) {
-        return true;
-    }
-    // let userInput = addEventListener("input", matchInput).toLowerCase(hints[hintIndex].a);
+    let userInput = event.key.toLowerCase();
+    console.log(event.key);
 
-    if (userInput === hints[hintIndex].a) {
-        document.querySelector("#correct").innerHTML = "CORRECT!"; 
-        wins++;
-        updateWins();
-    } else {
-        userTyped();
-    }
-}
-
-function matchInput() {
-    if (userInput.value === hints[hintIndex].a) {
-        document.querySelector("#correct").innerHTML = "CORRECT!"; 
-        wins++;
-        updateWins();
+    for (let i = 0; i < randomWord.length; i++) {
+        if (userInput === randomWord[i].toLowerCase()) {
+            userAnswer.push(userInput); 
+            console.log(userAnswer);
+            console.log("user input equals randomWord");
+        } 
     }
 
-}
+    if (randomWord.indexOf(userInput) === -1) {
+        userGuess.push(userInput);
+        remainGuess--;
+        console.log(userGuess);
+    }
+    
 
-//Function for updated user typed guesses.
-function userTyped() {
-    if (userAnswer !== hints[hintIndex].a); 
-    document.querySelector("#typedGuesses").innerHTML = userGuess;
 }
-userTyped();
+    // if (hintIndex === hints.length) {
+    //     return true;
+    // }
 
-initialGame();
-renderHints();
-updateWins();
-updateLoss();
+//     let userInput = event.key.toLowerCase();
+
+    //let userInput = addEventListener("input", matchInput).toLowerCase(hints[hintIndex].a);
+
+    // if (userInput === hints[hintIndex].a) {
+    //     document.querySelector("#correct").innerHTML = "CORRECT!"; 
+    //     wins++;
+    //     updateWins();
+    // } else {
+    //     userTyped();
+    //}
+//}
+
+// function matchInput() {
+//     if (userInput.value === hints[hintIndex].a) {
+//         document.querySelector("#correct").innerHTML = "CORRECT!"; 
+//         wins++;
+//         updateWins();
+//     }
+
+// }
+
+// //Function for updated user typed guesses.
+// function userTyped() {
+//     if (userAnswer !== hints[hintIndex].a); 
+//     document.querySelector("#typedGuesses").innerHTML = userGuess;
+// }
+// userTyped();
+
+// initialGame();
+// renderHints();
+// updateWins();
+// updateLoss();
 
 
 /*for (let i = 0; i < hint.length; i++){
@@ -116,4 +162,8 @@ updateLoss();
     //console.log(remainLet)
 }
 }*/
+
+document.querySelector("#hints").innerHTML = "Hint!: " + randomHint;
+document.querySelector("#typedGuesses").innerHTML =  userGuess;
+document.querySelector("#userWordGuess").innerHTML = userAnswer;
 
